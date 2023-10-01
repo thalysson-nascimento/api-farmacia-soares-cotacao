@@ -9,3 +9,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Quote {
+  id          String       @id @default(uuid())
+  status      String       @default("em andamento")
+  hashQuote   String
+  createdAt   DateTime     @default(now())
+  @@map("quote")
+}

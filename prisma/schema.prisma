@@ -15,5 +15,20 @@ model Quote {
   status      String       @default("em andamento")
   hashQuote   String
   createdAt   DateTime     @default(now())
+  product     Products[]
   @@map("quote")
+}
+
+model Products {
+  id           String  @id @default(uuid())
+  product      Quote   @relation(fields: [id_quote], references: [id])
+  id_quote     String
+  name         String
+  distributor  String?
+  amount       Float?
+  value        String?
+  status       Boolean? @default(false)
+  createdAt   DateTime     @default(now())
+
+  @@map("products")
 }

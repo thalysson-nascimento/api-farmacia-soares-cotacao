@@ -11,6 +11,7 @@ export class ListQuoteUseCase {
         status: true,
         hashQuote: true,
         createdAt: true,
+        typeQuote: true,
       },
     });
     return listQuote;

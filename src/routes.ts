@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { CreateProductController } from "./modules/products/useCase/createProduct/createProductController";
+import { DeleteProductController } from "./modules/products/useCase/deleteProduct/deleteProductController";
 import { ListProductController } from "./modules/products/useCase/listProduct/listProductController";
 import { ListProductQuoteIDController } from "./modules/products/useCase/listProductQuoteID/listProductQuoteIDController";
 import { CreateQuoteControler } from "./modules/quote/useCase/createQuote/createQuoteController";
@@ -13,6 +14,7 @@ const createProductController = new CreateProductController();
 const listQuoteController = new ListQuoteController();
 const listProductController = new ListProductController();
 const listProductQuoteIDController = new ListProductQuoteIDController();
+const deleteProductController = new DeleteProductController();
 
 routes.post("/quote/", createQuoteControler.handle);
 routes.post("/product/", createProductController.handle);
@@ -20,5 +22,7 @@ routes.post("/product/", createProductController.handle);
 routes.get("/quote", listQuoteController.handle);
 routes.get("/product", listProductController.handle);
 routes.get("/product-quote-id/:id_quote", listProductQuoteIDController.handle);
+
+routes.delete("/product/:id_product", deleteProductController.handle);
 
 export { routes };

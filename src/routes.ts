@@ -6,6 +6,7 @@ import { ListProductQuoteIDController } from "./modules/products/useCase/listPro
 import { UpdateProductController } from "./modules/products/useCase/updateProduct/updateProductController";
 import { CreateQuoteControler } from "./modules/quote/useCase/createQuote/createQuoteController";
 import { ListQuoteController } from "./modules/quote/useCase/listQuote/listQuoteController";
+import { UpdateStatusQuoteController } from "./modules/quote/useCase/updateStatusQuote/updateStatusQuoteController";
 
 const routes = Router();
 
@@ -17,6 +18,7 @@ const listProductController = new ListProductController();
 const listProductQuoteIDController = new ListProductQuoteIDController();
 const deleteProductController = new DeleteProductController();
 const updateProductController = new UpdateProductController();
+const updateStatusQuoteController = new UpdateStatusQuoteController();
 
 routes.post("/quote/", createQuoteControler.handle);
 routes.post("/product/", createProductController.handle);
@@ -28,5 +30,6 @@ routes.get("/product-quote-id/:id_quote", listProductQuoteIDController.handle);
 routes.delete("/product/:id_product", deleteProductController.handle);
 
 routes.patch("/product", updateProductController.handle);
+routes.patch("/update-status-quote", updateStatusQuoteController.handle);
 
 export { routes };
